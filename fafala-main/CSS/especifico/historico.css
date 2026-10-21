@@ -1,0 +1,149 @@
+/* ======================================
+   FAFALA — HISTÓRICO DE UTILIZAÇÃO
+   Só o que é específico desta página.
+   O resto vem do style.css (container, card,
+   grade, campo, botao, alerta, texto-suave).
+====================================== */
+
+.pagina-historico .cabecalho-pagina {
+    margin-bottom: var(--espaco-g);
+}
+
+.pagina-historico .card {
+    margin-bottom: var(--espaco-g);
+    padding: 32px;
+}
+
+/* Filtros: o pictograma ocupa a linha inteira */
+.pagina-historico .campo-largo {
+    grid-column: 1 / -1;
+}
+
+.pagina-historico .botoes-filtro {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-m);
+}
+
+/* Total de registros */
+.pagina-historico .resumo-total {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-p);
+    margin-bottom: var(--espaco-m);
+    padding: 14px var(--espaco-m);
+    border-radius: var(--raio);
+    background: var(--cor-clara);
+    color: var(--texto-suave);
+    font-size: var(--texto-pequeno);
+}
+
+.pagina-historico .resumo-total strong {
+    color: var(--cor-principal);
+    font-size: var(--texto-medio);
+}
+
+/* Tabela */
+.pagina-historico .tabela-responsiva {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+}
+
+.pagina-historico .tabela-historico {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--branco);
+    font-size: 0.9375rem;
+}
+
+.pagina-historico .tabela-historico th {
+    padding: 14px var(--espaco-m);
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+    font-size: var(--texto-pequeno);
+    font-weight: 800;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.pagina-historico .tabela-historico td {
+    padding: 14px var(--espaco-m);
+    border-top: 1px solid var(--borda);
+    color: var(--texto);
+    vertical-align: middle;
+}
+
+.pagina-historico .tabela-historico tbody tr:nth-child(even) {
+    background: var(--fundo-campo);
+}
+
+.pagina-historico .tabela-historico tbody tr:hover {
+    background: var(--cor-clara);
+}
+
+.pagina-historico .tabela-historico .estado-vazio {
+    padding: var(--espaco-gg) var(--espaco-m);
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+/* Link para o relatório */
+.pagina-historico .acoes-pagina {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Celular */
+@media (max-width: 640px) {
+    .pagina-historico .card {
+        padding: var(--espaco-g) var(--espaco-m);
+    }
+
+    .pagina-historico .botoes-filtro {
+        flex-direction: column;
+    }
+
+    .pagina-historico .botoes-filtro .botao,
+    .pagina-historico .acoes-pagina .botao {
+        width: 100%;
+    }
+
+    .pagina-historico .tabela-historico {
+        min-width: 600px;
+    }
+}
+
+/* Reforço: espaço entre blocos */
+main.pagina-historico > section.card {
+    margin-bottom: 32px;
+}
+
+main.pagina-historico > .cabecalho-pagina {
+    margin-bottom: 32px;
+}
+
+main.pagina-historico > .acoes-pagina {
+    margin-top: 8px;
+}
+
+/* Reforço: tabela */
+main.pagina-historico .tabela-historico th {
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+    padding: 14px 16px;
+    text-align: left;
+}
+
+main.pagina-historico .tabela-historico td {
+    padding: 14px 16px;
+    border-top: 1px solid var(--borda);
+}
+
+main.pagina-historico .resumo-total {
+    padding: 14px 16px;
+    border-radius: var(--raio);
+    background: var(--cor-clara);
+}
