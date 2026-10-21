@@ -1,0 +1,258 @@
+.topo-paciente {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-m);
+    padding: 12px var(--espaco-g);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--borda);
+}
+
+
+/* Logo  */
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    text-decoration: none;
+}
+
+.marca:hover {
+    text-decoration: none;
+}
+
+.marca img {
+    height: 44px;
+    width: auto;
+}
+
+/* AQUI EH PROVISÓRIO (DPS DO LOGO PRONTO PODE APAGAR)*/
+.marca-ponto {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--degrade-botao);
+}
+
+.marca-nome {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--cor-principal);
+    letter-spacing: -0.01em;
+}
+
+
+/* Navegação*/
+
+.nav-paciente {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-p);
+}
+
+.nav-item {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--texto-suave);
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.nav-item svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nav-item:hover {
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+}
+
+.nav-item:active {
+    transform: scale(0.94);
+}
+
+/* ícone destacado na current page*/
+.nav-item[aria-current="page"] {
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+}
+
+/* engrenagem */
+.nav-item-responsavel {
+    opacity: 0.7;
+}
+
+.nav-item-responsavel:hover {
+    opacity: 1;
+}
+
+
+/* =====================================================
+   FUNDO DA ÁREA DO PACIENTE (personalizadoooo)
+   ===================================================== */
+
+body {
+    background: var(--cor-fundo-paciente);
+}
+
+
+/* =====================================================
+   TELA INICIAL
+   ===================================================== */
+
+.cabecalho-inicio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--espaco-m);
+    margin-bottom: var(--espaco-g);
+}
+
+.cabecalho-inicio h1 {
+    margin-bottom: 0;
+}
+
+.campo-busca {
+    width: 100%;
+    max-width: 300px;
+    min-height: var(--altura-campo);
+    padding: 12px 20px;
+    border: 1.5px solid var(--borda);
+    border-radius: 999px;
+    background: var(--branco);
+    font-size: var(--texto-normal);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo-busca:focus {
+    border-color: var(--cor-principal);
+    box-shadow: var(--sombra-foco);
+}
+
+.grade-pranchas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--tamanho-card), 1fr));
+    gap: var(--espaco-cards);
+}
+
+.card-prancha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: var(--espaco-m);
+    border: 4px solid var(--cor-card);
+    border-radius: var(--raio-grande);
+    background: var(--branco);
+    box-shadow: 0 6px 18px rgba(46, 69, 110, 0.08);
+    color: var(--texto);
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.card-prancha:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(46, 69, 110, 0.14);
+}
+
+.card-prancha:active {
+    transform: scale(0.97);
+}
+
+.card-prancha:focus-visible {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 3px;
+}
+
+.card-prancha[hidden] {
+    display: none;
+}
+
+.card-prancha-imagem {
+    width: 100%;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: var(--raio);
+    background: var(--branco);
+    overflow: hidden;
+}
+
+.card-prancha-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* prancha sem pictograma*/
+.card-prancha-letra {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: var(--raio);
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+    font-size: calc(var(--tamanho-card) * 0.4);
+    font-weight: 800;
+}
+
+.card-prancha-nome {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--cor-principal);
+    text-align: center;
+    line-height: 1.25;
+}
+
+.aviso-vazio {
+    padding: var(--espaco-gg) var(--espaco-m);
+    text-align: center;
+    color: var(--texto-suave);
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   RESPONSIVO
+   ===================================================== */
+
+@media (max-width: 640px) {
+
+    .campo-busca {
+        max-width: none;
+    }
+
+    .topo-paciente {
+        padding: 10px var(--espaco-m);
+    }
+
+    .marca-nome {
+        font-size: 1.25rem;
+    }
+
+    .marca-ponto {
+        width: 28px;
+        height: 28px;
+    }
+}
+
