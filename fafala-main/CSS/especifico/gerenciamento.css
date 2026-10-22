@@ -1,0 +1,197 @@
+.pagina-config {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--espaco-gg) var(--espaco-m);
+}
+
+.card-config {
+    width: 100%;
+    max-width: 760px;
+}
+
+
+/* linha de cima: Início + paciente */
+
+.topo-config {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-m);
+    margin-bottom: var(--espaco-g);
+}
+
+.link-inicio {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-p);
+    min-height: 44px;
+    padding: 8px 14px 8px 10px;
+    border-radius: 999px;
+    color: var(--texto-suave);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.link-inicio:hover {
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+    text-decoration: none;
+}
+
+.link-inicio svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.paciente-ativo {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+    font-size: var(--texto-pequeno);
+    font-weight: 700;
+}
+
+
+/* título */
+
+.cabecalho-config {
+    margin-bottom: 28px;
+}
+
+.cabecalho-config h1 {
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.cabecalho-config p {
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+
+/* seções */
+
+.secao-config + .secao-config {
+    margin-top: var(--espaco-g);
+}
+
+.secao-config h2 {
+    margin-bottom: var(--espaco-p);
+    font-size: var(--texto-pequeno);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+}
+
+.lista-config {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espaco-m);
+}
+
+
+/* botões grandes de cada opção */
+
+.opcao-config {
+    height: 100%;
+    min-height: 88px;
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-m);
+    padding: var(--espaco-m);
+    border: 2px solid var(--borda);
+    border-radius: var(--raio-grande);
+    background: var(--fundo-campo);
+    color: var(--texto);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.opcao-config:hover {
+    border-color: var(--cor-principal);
+    background: var(--cor-clara);
+    box-shadow: var(--sombra-botao);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.opcao-config:focus-visible {
+    outline: none;
+    border-color: var(--cor-principal);
+    box-shadow: var(--sombra-foco);
+}
+
+.opcao-icone {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--raio);
+    background: var(--degrade-botao);
+    color: var(--cor-principal);
+}
+
+.opcao-icone svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.opcao-texto strong {
+    display: block;
+    font-weight: 800;
+    color: var(--cor-principal);
+}
+
+.opcao-texto span {
+    font-size: var(--texto-pequeno);
+    color: var(--texto-suave);
+}
+
+
+/* botão de sair (cor de aviso) */
+
+.opcao-perigo .opcao-icone {
+    background: var(--erro-fundo);
+    color: var(--erro);
+}
+
+.opcao-perigo .opcao-texto strong {
+    color: var(--erro);
+}
+
+.opcao-perigo:hover {
+    border-color: var(--erro);
+    background: var(--erro-fundo);
+    box-shadow: none;
+}
+
+
+/* celular */
+
+@media (max-width: 600px) {
+    .lista-config {
+        grid-template-columns: 1fr;
+    }
+
+    .card-config {
+        padding: var(--espaco-m);
+    }
+}

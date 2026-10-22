@@ -1,0 +1,101 @@
+/* =====================================================
+   FAFALA - ACESSIBILIDADE E PERFIS VISUAIS
+   Responsável: Pessoa 1
+
+   Estas classes são colocadas no <body> das telas do paciente
+   pelo estilo_paciente.php, de acordo com a configuração salva.
+   As cores e tamanhos que são números (fundo, card, tamanho,
+   espaçamento) vêm como variáveis direto do PHP.
+   ===================================================== */
+
+
+/* =====================================================
+   PERFIL INFANTIL
+   Manchas verde e amarela por cima da cor de fundo
+   ===================================================== */
+
+.perfil-infantil {
+    background-image: var(--degrade-fundo);
+    background-attachment: fixed;
+}
+
+
+/* =====================================================
+   ALTO CONTRASTE
+   Bordas e textos bem escuros, sem sombras suaves
+   ===================================================== */
+
+.alto-contraste {
+    --texto: #000000;
+    --texto-suave: #1f2533;
+    --borda: #1f2533;
+}
+
+.alto-contraste .card-prancha,
+.alto-contraste .card-pictograma {
+    border-color: #000000;
+    box-shadow: none;
+}
+
+.alto-contraste .card-prancha-nome,
+.alto-contraste .card-pictograma-nome {
+    color: #000000;
+}
+
+
+/* =====================================================
+   SEM TEXTO
+   Esconde o nome embaixo dos pictogramas
+   (os nomes das pranchas continuam aparecendo)
+   ===================================================== */
+
+.sem-texto .card-pictograma-nome {
+    display: none;
+}
+
+
+/* =====================================================
+   MODO ESCURO
+   Fundo e textos da página escuros.
+   Os cards continuam claros, porque as imagens do ARASAAC
+   têm fundo branco.
+   ===================================================== */
+
+.modo-escuro {
+    --cor-fundo-paciente: #161B26;
+    color: #F2F4F8;
+}
+
+.modo-escuro h1,
+.modo-escuro h2 {
+    color: #F2F4F8;
+}
+
+.modo-escuro .topo-paciente {
+    background: rgba(22, 27, 38, 0.85);
+    border-bottom-color: #2A3242;
+}
+
+.modo-escuro .marca-nome {
+    color: #F2F4F8;
+}
+
+.modo-escuro .nav-item {
+    color: #C3C9D4;
+}
+
+.modo-escuro .nav-item:hover,
+.modo-escuro .nav-item[aria-current="page"] {
+    background: #2A3242;
+    color: #F2F4F8;
+}
+
+.modo-escuro .campo-busca {
+    background: #222A38;
+    border-color: #3A4356;
+    color: #F2F4F8;
+}
+
+.modo-escuro .aviso-vazio {
+    color: #C3C9D4;
+}

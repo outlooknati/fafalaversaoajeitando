@@ -1,0 +1,577 @@
+.pagina-acesso {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--espaco-gg) var(--espaco-m);
+}
+
+
+.card-acesso {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+}
+
+
+/* Cabeçalho: título e subtítulo centralizados */
+
+.cabecalho-acesso {
+    text-align: center;
+    margin-bottom: var(--espaco-g);
+}
+
+.cabecalho-acesso p {
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+}
+
+
+/* Rodapé: link "Já tem conta? Entrar" */
+
+.rodape-acesso {
+    text-align: center;
+    margin-top: var(--espaco-g);
+}
+
+.rodape-acesso p {
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+}
+
+
+/* =====================================================
+   QUESTIONÁRIO
+   ===================================================== */
+
+.questionario {
+    width: 100%;
+    max-width: 600px;
+}
+
+.pagina-acesso:has(.questionario) {
+    align-items: flex-start;
+    padding: 72px var(--espaco-g) var(--espaco-gg);
+}
+
+.questionario .cabecalho-acesso {
+    margin-bottom: 36px;
+}
+
+.card-questionario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-g);
+    padding: 32px;
+}
+
+
+/* Barra de progresso */
+
+.progresso {
+    display: none;
+}
+
+.em-etapas .progresso {
+    display: block;
+}
+
+.progresso-topo {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--espaco-m);
+    margin-bottom: 10px;
+    font-size: var(--texto-pequeno);
+    font-weight: 700;
+    color: var(--texto-suave);
+}
+
+.progresso-grupo {
+    color: var(--cor-principal);
+    font-weight: 800;
+}
+
+.progresso-barra {
+    height: 8px;
+    border-radius: 999px;
+    background: var(--borda);
+    overflow: hidden;
+}
+
+.progresso-preenchido {
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--degrade-botao);
+    transition: width 0.35s ease;
+}
+
+
+/* Espaço do mascote (TEM QUE COLOCARRRRRR NÃO ESQUECER!!!!!!!!!!!!!!) */
+
+.mascote {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto;
+}
+
+.mascote:empty {
+    display: none;
+}
+
+.mascote img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* Grupos (Acessibilidade, Perfil visual) */
+
+.grupo-perguntas {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-g);
+}
+
+.grupo-perguntas h2 {
+    font-size: var(--texto-medio);
+    margin-bottom: 0;
+}
+
+.em-etapas .grupo-perguntas h2 {
+    display: none;
+}
+
+.pergunta {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.pergunta legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin-bottom: var(--espaco-g);
+    font-size: 1.125rem;
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--texto);
+}
+
+.pergunta legend + * {
+    clear: both;
+}
+
+.em-etapas .pergunta legend {
+    font-size: 1.5rem;
+    color: var(--cor-principal);
+    text-align: center;
+}
+
+.pergunta legend:focus {
+    outline: none;
+}
+
+.em-etapas .pergunta {
+    display: none;
+}
+
+.em-etapas .pergunta.ativa {
+    display: block;
+    animation: aparecer 0.35s ease both;
+}
+
+
+/* Opções de resposta*/
+
+.respostas {
+    display: grid;
+    gap: 12px;
+}
+
+.resposta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-m);
+    min-height: var(--altura-botao);
+    padding: 14px 18px;
+    border: 2px solid var(--borda);
+    border-radius: var(--raio);
+    background: var(--branco);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s, transform 0.15s;
+}
+
+.resposta input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.resposta::after {
+    content: "";
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--borda-hover);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.8125rem;
+    color: var(--branco);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.resposta:hover {
+    border-color: var(--borda-hover);
+    background: var(--fundo-campo);
+}
+
+.resposta:active {
+    transform: scale(0.98);
+}
+
+/* opção escolhida */
+.resposta:has(input:checked) {
+    border-color: var(--cor-principal);
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+}
+
+.resposta:has(input:checked)::after {
+    content: "✓";
+    border-color: var(--cor-principal);
+    background: var(--cor-principal);
+}
+
+/* contorno de foco para quem navega pelo teclado */
+.resposta:has(input:focus-visible) {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 3px;
+}
+
+
+/* Aviso "escolha uma opção" */
+
+.aviso-etapa {
+    text-align: center;
+}
+
+
+/* Mensagem antes de concluir */
+
+.mensagem-final {
+    padding: var(--espaco-m) 20px;
+    border-radius: var(--raio);
+    background: linear-gradient(135deg, rgba(159, 214, 176, 0.18), rgba(247, 241, 168, 0.28));
+    color: var(--texto-suave);
+    font-size: 0.9375rem;
+    text-align: center;
+}
+
+.em-etapas .mensagem-final {
+    display: none;
+}
+
+.em-etapas.ultima-etapa .mensagem-final {
+    display: block;
+}
+
+
+/* Botões Voltar / Próxima / Concluir */
+
+.navegacao {
+    display: flex;
+    gap: 12px;
+}
+
+.navegacao .botao {
+    flex: 1;
+}
+
+.navegacao .botao-secundario {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+#btnVoltar,
+#btnProxima {
+    display: none;
+}
+
+.em-etapas #btnVoltar,
+.em-etapas #btnProxima {
+    display: inline-flex;
+}
+
+.navegacao [hidden] {
+    display: none !important;
+}
+
+/* Escolha de cor (só aparece com "Personalizado" marcado) */
+
+.escolha-cor {
+    display: none;
+    margin-top: var(--espaco-g);
+    padding-top: var(--espaco-g);
+    border-top: 1px solid var(--borda);
+}
+
+.pergunta:has(input[value="Personalizado"]:checked) .escolha-cor {
+    display: block;
+    animation: aparecer 0.3s ease both;
+}
+
+.escolha-cor-titulo {
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: var(--espaco-m);
+}
+
+.cores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--espaco-m) var(--espaco-p);
+    margin-bottom: var(--espaco-m);
+}
+
+.cor-opcao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--texto-pequeno);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* esconde o radio, mas ele continua funcionando */
+.cor-opcao input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* bolinha: centro na cor do fundo, borda na cor do card */
+.cor-bolinha {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--fundo);
+    border: 6px solid var(--card);
+    transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.cor-opcao:hover .cor-bolinha {
+    transform: scale(1.06);
+}
+
+/* cor escolhida: anel em volta */
+.cor-opcao:has(input:checked) .cor-bolinha {
+    box-shadow: 0 0 0 3px var(--branco), 0 0 0 6px var(--cor-principal);
+}
+
+.cor-opcao:has(input:checked) {
+    color: var(--cor-principal);
+}
+
+/* foco pelo teclado */
+.cor-opcao:has(input:focus-visible) .cor-bolinha {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 6px;
+}
+
+.escolha-cor .dica {
+    text-align: center;
+}
+
+
+/* Animação de entrada de cada pergunta */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateX(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVO
+   ===================================================== */
+
+/* tablet e computador*/
+@media (min-width: 641px) {
+
+    .questionario {
+        max-width: 720px;
+    }
+
+    .questionario .cabecalho-acesso h1 {
+        font-size: 2.25rem;
+    }
+
+    .questionario .cabecalho-acesso p {
+        font-size: 1.0625rem;
+    }
+
+    .card-questionario {
+        padding: 40px 48px;
+        gap: 32px;
+    }
+
+    .progresso-topo {
+        font-size: 0.9375rem;
+    }
+
+    .progresso-barra {
+        height: 10px;
+    }
+
+    .em-etapas .pergunta legend {
+        font-size: 1.875rem;
+        margin-bottom: 32px;
+    }
+
+    .respostas {
+        gap: var(--espaco-m);
+    }
+
+    .resposta {
+        min-height: 68px;
+        padding: 16px 24px;
+        font-size: 1.25rem;
+    }
+
+    .resposta::after {
+        width: 28px;
+        height: 28px;
+    }
+
+    .navegacao .botao {
+        min-height: 60px;
+        font-size: 1.125rem;
+    }
+
+    .cor-bolinha {
+        width: 64px;
+        height: 64px;
+    }
+
+    .cor-opcao {
+        font-size: 0.9375rem;
+    }
+
+    .escolha-cor-titulo {
+        font-size: 1.125rem;
+    }
+}
+
+/* computador (tela grande + mouse): versão compacta, para caber sem rolar.
+   O "hover" e o "pointer: fine" garantem que isso não pega o tablet */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+
+    .pagina-acesso:has(.questionario) {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    .questionario {
+        max-width: 560px;
+    }
+
+    .questionario .cabecalho-acesso {
+        margin-bottom: 20px;
+    }
+
+    .questionario .cabecalho-acesso h1 {
+        font-size: 1.75rem;
+        margin-bottom: 4px;
+    }
+
+    .questionario .cabecalho-acesso p {
+        font-size: 0.9375rem;
+    }
+
+    .card-questionario {
+        padding: 28px 36px;
+        gap: 20px;
+    }
+
+    .progresso-barra {
+        height: 8px;
+    }
+
+    .em-etapas .pergunta legend {
+        font-size: 1.375rem;
+        margin-bottom: 20px;
+    }
+
+    .respostas {
+        gap: 10px;
+    }
+
+    .resposta {
+        min-height: 48px;
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+
+    .resposta::after {
+        width: 22px;
+        height: 22px;
+    }
+
+    .navegacao .botao {
+        min-height: 48px;
+        font-size: 1rem;
+    }
+
+    .cor-bolinha {
+        width: 44px;
+        height: 44px;
+        border-width: 5px;
+    }
+}
+
+@media (max-width: 640px) {
+
+    /* cadastro e login: cartão ocupa a tela inteira */
+    .pagina-acesso {
+        padding: 0;
+        align-items: stretch;
+    }
+
+    .card-acesso {
+        max-width: none;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    /* questionário */
+    .pagina-acesso:has(.questionario) {
+        padding: 56px var(--espaco-m) var(--espaco-g);
+        align-items: flex-start;
+    }
+
+    .card-questionario {
+        padding: var(--espaco-g) 20px;
+        border-radius: var(--raio-cartao);
+    }
+
+    .em-etapas .pergunta legend {
+        font-size: 1.375rem;
+    }
+}

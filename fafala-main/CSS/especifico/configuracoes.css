@@ -1,0 +1,504 @@
+/* =====================================================
+   FAFALA - TELAS DE CONFIGURAÇÃO (área do responsável)
+   ===================================================== */
+
+
+/* Página */
+
+.pagina-config {
+    max-width: 800px;
+    padding-top: var(--espaco-g);
+    padding-bottom: var(--espaco-gg);
+}
+
+/* link "← Configurações" */
+.voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    margin-bottom: var(--espaco-p);
+    color: var(--texto-suave);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.voltar:hover {
+    color: var(--cor-principal);
+    text-decoration: none;
+}
+
+.voltar svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cabecalho-config {
+    margin-bottom: var(--espaco-g);
+}
+
+.cabecalho-config h1 {
+    margin-bottom: 4px;
+}
+
+
+/* Um cartão só, com a prévia em cima e as opções embaixo */
+
+.config-layout {
+    width: 100%;
+}
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 32px;
+}
+
+
+/* Título de cada seção (Aparência / Acessibilidade) */
+
+.config-secao {
+    margin: 0;
+    padding-top: var(--espaco-m);
+    border-top: 2px solid var(--borda);
+    font-size: var(--texto-medio);
+}
+
+.config-secao:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+
+/* Perfis visuais: um cartão para cada perfil */
+
+.perfis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.perfil-opcao {
+    position: relative;
+    cursor: pointer;
+}
+
+.perfil-opcao input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.perfil-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    padding: var(--espaco-m) 12px;
+    border: 2px solid var(--borda);
+    border-radius: var(--raio);
+    background: var(--branco);
+    text-align: center;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.perfil-conteudo small {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--texto-suave);
+}
+
+/* bolinha com as cores do perfil */
+.perfil-amostra {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--fundo);
+    border: 5px solid var(--card);
+    box-shadow: 0 0 0 1px var(--borda);
+}
+
+.perfil-amostra-infantil {
+    background: var(--degrade-botao);
+}
+
+.perfil-opcao:hover .perfil-conteudo {
+    border-color: var(--borda-hover);
+}
+
+.perfil-opcao input:checked + .perfil-conteudo {
+    border-color: var(--cor-principal);
+    background: var(--cor-clara);
+}
+
+.perfil-opcao input:checked + .perfil-conteudo strong {
+    color: var(--cor-principal);
+}
+
+.perfil-opcao input:focus-visible + .perfil-conteudo {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 3px;
+}
+
+
+/* Escolha de cor (só aparece com "Personalizado" marcado) */
+
+.escolha-cor {
+    display: none;
+    margin-top: var(--espaco-m);
+    padding: var(--espaco-m);
+    border-radius: var(--raio);
+    background: var(--fundo-campo);
+}
+
+.config-grupo:has(input[data-nome="Personalizado"]:checked) .escolha-cor {
+    display: block;
+}
+
+.escolha-cor-titulo {
+    margin-bottom: 12px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.cores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--espaco-m) var(--espaco-p);
+}
+
+.cor-opcao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--texto-pequeno);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cor-opcao input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cor-bolinha {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--fundo);
+    border: 6px solid var(--card);
+    transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.cor-opcao:hover .cor-bolinha {
+    transform: scale(1.06);
+}
+
+.cor-opcao:has(input:checked) .cor-bolinha {
+    box-shadow: 0 0 0 3px var(--branco), 0 0 0 6px var(--cor-principal);
+}
+
+.cor-opcao:has(input:checked) {
+    color: var(--cor-principal);
+}
+
+.cor-opcao:has(input:focus-visible) .cor-bolinha {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 6px;
+}
+
+
+/* Cada grupo de configuração */
+
+.config-grupo {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.config-grupo > legend,
+.config-titulo {
+    display: block;
+    padding: 0;
+    margin-bottom: 4px;
+    font-size: 1.0625rem;
+    font-weight: 800;
+    color: var(--texto);
+}
+
+
+/* Botões de escolha lado a lado (Pequeno / Médio / Grande) */
+
+.segmentado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-p);
+    margin-top: 12px;
+}
+
+.segmento {
+    position: relative;
+    cursor: pointer;
+}
+
+/* esconde o radio, mas ele continua funcionando */
+.segmento input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.segmento span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    min-width: 84px;
+    padding: 10px 18px;
+    border: 2px solid var(--borda);
+    border-radius: 999px;
+    background: var(--branco);
+    font-weight: 700;
+    line-height: 1.2;
+    transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.segmento small {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+}
+
+.segmento:hover span {
+    border-color: var(--borda-hover);
+}
+
+.segmento input:checked + span {
+    border-color: var(--cor-principal);
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+}
+
+.segmento input:focus-visible + span {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 3px;
+}
+
+
+/* Controle deslizante (quantidade de cards) */
+
+.controle-faixa {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-m);
+    margin-top: 12px;
+}
+
+.controle-faixa input[type="range"] {
+    flex: 1;
+    height: 32px;
+    accent-color: var(--cor-principal);
+    cursor: pointer;
+}
+
+.controle-faixa output {
+    min-width: 52px;
+    padding: 6px 12px;
+    border-radius: var(--raio);
+    background: var(--cor-clara);
+    color: var(--cor-principal);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+
+/* Interruptor liga/desliga */
+
+.interruptor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-m);
+    padding: var(--espaco-m) 0;
+    border-top: 1px solid var(--borda);
+    cursor: pointer;
+}
+
+.interruptor:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.interruptor-texto strong {
+    display: block;
+    font-size: 1.0625rem;
+}
+
+.interruptor-texto small {
+    display: block;
+    color: var(--texto-suave);
+    font-size: var(--texto-pequeno);
+}
+
+.interruptor input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.interruptor-trilho {
+    position: relative;
+    flex-shrink: 0;
+    width: 54px;
+    height: 32px;
+    border-radius: 999px;
+    background: var(--borda-hover);
+    transition: background-color 0.2s;
+}
+
+.interruptor-trilho::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--branco);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.interruptor input:checked + .interruptor-trilho {
+    background: var(--cor-principal);
+}
+
+.interruptor input:checked + .interruptor-trilho::after {
+    transform: translateX(22px);
+}
+
+.interruptor input:focus-visible + .interruptor-trilho {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 3px;
+}
+
+
+/* Prévia */
+
+.previa {
+    margin: 0;
+}
+
+.previa-titulo {
+    margin-bottom: var(--espaco-p);
+    font-size: var(--texto-pequeno);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+}
+
+.previa-tela {
+    --previa-tamanho: 72px;
+    --previa-espaco: 8px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--previa-tamanho), 1fr));
+    align-content: start;
+    gap: var(--previa-espaco);
+    padding: var(--espaco-m);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-grande);
+    background: var(--previa-fundo, #FBFAF7);
+    transition: gap 0.2s;
+}
+
+.previa-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 4px;
+    border: 3px solid var(--previa-card, #FFFFFF);
+    border-radius: 12px;
+    background: var(--branco);
+    box-shadow: 0 3px 8px rgba(46, 69, 110, 0.08);
+}
+
+.previa-emoji {
+    font-size: calc(var(--previa-tamanho) * 0.42);
+    line-height: 1.1;
+}
+
+.previa-nome {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--cor-principal);
+}
+
+.previa-tela.sem-texto .previa-nome {
+    display: none;
+}
+
+.previa-tela.alto-contraste .previa-card {
+    border-color: #000000;
+    box-shadow: none;
+}
+
+.previa-tela.alto-contraste .previa-nome {
+    color: #000000;
+}
+
+/* perfil Infantil: manchas do degradê na prévia */
+.previa-tela.perfil-infantil {
+    background-image: var(--degrade-fundo);
+}
+
+/* modo escuro na prévia */
+.previa-tela.modo-escuro {
+    background: #161B26;
+    border-color: #2A3242;
+}
+
+
+/* =====================================================
+   RESPONSIVO
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    .config-form {
+        padding: var(--espaco-g) 20px;
+    }
+
+    .perfis {
+        grid-template-columns: 1fr;
+    }
+
+    /* no celular, cada perfil vira uma linha: bolinha à esquerda, texto à direita */
+    .perfil-conteudo {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 14px;
+        align-items: center;
+        text-align: left;
+    }
+
+    .perfil-amostra {
+        grid-row: span 2;
+    }
+}
